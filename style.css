@@ -31,6 +31,7 @@ h3 {
 /* ヘッダのスタイルを指定 */
 header {
   width: 960px;
+  width: 100%;
   margin: 32px auto 32px auto;
   display: flex;
   flex-wrap: wrap;
