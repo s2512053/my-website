@@ -1,5 +1,5 @@
-/* アスキーコードをutf8に */
 @charset "utf-8";
+/* アスキーコードをutf8に */
 
 /* 共通デザイン */
 /* ページのスクロール移動をスムーズに */
@@ -30,34 +30,93 @@ h3 {
 }
 /* ヘッダのスタイルを指定 */
 header {
-  width: 960px;
+  max-width: 960px;
   width: 100%;
-  margin: 32px auto 32px auto;
+  margin: 24px auto;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 header img {
-  width: 640px;
+  max-width: 320px;
+  width: 100%;
+  height: auto;
 }
 
 .site_reserve {
-  width: 320px;
   text-align: right;
 }
+
+.site_reserve h3 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  color: #6f4c5b;
+}
+
+.site_reserve h2 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  color: #c0392b;
+}
+
+.reserve_buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btn_header_reserve,
+.btn_header_takeout {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.btn_header_reserve {
+  background-color: #6f4c5b;
+  color: #fff;
+}
+
+.btn_header_reserve:hover {
+  background-color: #8a6275;
+}
+
+.btn_header_takeout {
+  background-color: #c0392b;
+  color: #fff;
+}
+
+.btn_header_takeout:hover {
+  background-color: #962d22;
+}
+
 /* スマホ用ヘッダのスタイル*/
 @media screen and (max-width: 960px) {
   header {
-    width: 100%;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    margin: 16px auto;
   }
 
   header img {
-    width: 100%;
+    max-width: 260px;
   }
 
   .site_reserve {
     width: 100%;
     text-align: center;
+  }
+
+  .reserve_buttons {
+    justify-content: center;
   }
 }
 /* メインの指定 */
@@ -100,14 +159,38 @@ nav a:hover {
   opacity: 0.7;
 }
 /* メインのイベント画像の指定 */
-#main-event img {
+.event_gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.event_gallery img {
   width: 280px;
-  margin: 8px;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.event_gallery img:hover {
+  transform: scale(1.03);
 }
 
 /* スマホ用イベント画像のスタイル*/
 @media screen and (max-width: 960px) {
-  #main-event img {
+  .event_gallery img {
+    width: 45%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .event_gallery img {
     width: 90%;
   }
 }
@@ -273,6 +356,14 @@ nav a:hover {
 }
 
 
+/* カレンダーとマップの iframe の共通レスポンシブ指定 */
+.calendar_news iframe,
+.access_map iframe {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
 /* スマホ用アクセスのスタイル*/
 @media screen and (max-width: 960px) {
   .access_map iframe {
@@ -284,9 +375,6 @@ nav a:hover {
 footer {
   text-align: center;
 }
-
-以下chatgpt
-
 
 #main-review{
     text-align: center;
@@ -414,4 +502,62 @@ a:hover{
     opacity: 0.8;
 }
 
+/* 追加スタイル: レビュー画像アバター化 */
+.review_card img {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 15px auto;
+    border: 3px solid #fff1cf;
+    display: block;
+}
 
+/* 追加スタイル: トップに戻るボタン */
+.top_button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #6f4c5b;
+    color: white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    z-index: 1000;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top_button:hover {
+    background-color: #8a6275;
+    transform: translateY(-3px);
+    color: white;
+}
+
+/* 追加スタイル: テイクアウト予約フォームボタン */
+.takeout_reserve a {
+    display: inline-block;
+    background-color: #c0392b;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.takeout_reserve a:hover {
+    background-color: #962d22;
+}
+
+/* ナビゲーションバーの z-index 調整 */
+nav {
+    z-index: 100;
+}
